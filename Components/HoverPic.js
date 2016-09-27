@@ -51,7 +51,7 @@ export default class HoverPic extends MyComponent {
     })
 
     return (
-      <View style={{position:this.state.p,top:this.state.t,left:this.state.l,borderWidth:1,width:this.state.vW,height:this.state.vH,justifyContent:"center",flexDirection:"row"}}>
+      <View style={{position:this.state.p,top:this.state.t,left:this.state.l,borderWidth:0,width:this.state.vW,height:this.state.vH,justifyContent:"center",flexDirection:"row"}}>
         <Animated.View style={[
           {
           //  position:"absolute",

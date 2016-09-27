@@ -10,9 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
-  AsyncStorage,
   Navigator,
+  AsyncStorage,
 
 } from 'react-native';
 
@@ -22,14 +21,12 @@ import HomePage from './Pages/HomePage';
 class WordMerge extends Component {
   constructor(props){
     super(props);
-    var {height, width} = Dimensions.get('window');
-    console.log("h:"+height+",w: "+width);
   }
   render() {
     return (
        <Navigator
           initialRoute={{
-            page: "StartPage",
+            page: "Home",
             data:{ id: 1, name: 'Tai Lopez', wins: '27', pic: require('./images/tai.png') }
         }}
           renderScene={(route, navigator) => {
@@ -49,9 +46,10 @@ class WordMerge extends Component {
                 navigator.pop();
             };
 
+
             switch(route.page){
               case "Home":
-                  return (<HomePage/>);
+                  return (<HomePage nav={navigate}/>);
               // case "Login":
               //     return (<LoginPage/>);
               // case "SignUp":
@@ -81,7 +79,7 @@ class WordMerge extends Component {
               // case "Results":
               //     return (<ResultPage friend={route.data.friend} won={route.data.won}/>);
               default:
-                  return(<HomePage/>);
+                  return(<HomePage nav={navigate} back={back}/>);
             }
 
         }}

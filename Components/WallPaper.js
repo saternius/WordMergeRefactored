@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, StyleSheet, Animated, Easing } from 'react-native';
+import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, StyleSheet, Animated, Easing, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MyComponent from './MyComponent'
 export default class WallPaper extends MyComponent {
 
   constructor(props){
     super(props);
+    var dims = Dimensions.get('window');
     this.setDefaultState({
       colors: ["#057d8a","#006666","#006666","#02474f"],
       style: StyleSheet.create({
               myStyle:{
-                width:360,
-                height:640,
+                width:dims.width,
+                height:dims.height,
                 position:"absolute",
                 top:0,
                 left:0,
