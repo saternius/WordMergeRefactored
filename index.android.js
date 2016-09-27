@@ -17,6 +17,7 @@ import {
 
 
 import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage';
 
 class WordMerge extends Component {
   constructor(props){
@@ -50,8 +51,8 @@ class WordMerge extends Component {
             switch(route.page){
               case "Home":
                   return (<HomePage nav={navigate}/>);
-              // case "Login":
-              //     return (<LoginPage/>);
+              case "Login":
+                  return (<LoginPage nav={navigate} back={back}/>);
               // case "SignUp":
               //     return (<SignUpPage/>);
               // case "Start":
