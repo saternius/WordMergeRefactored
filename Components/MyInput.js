@@ -30,6 +30,14 @@ export default class MyInput extends MyComponent {
       }
       this.props.blurFunc();
     }
+
+    this.isEmpty = ()=>{
+      return this.state.text === this.state.placeholder;
+    }
+
+    this.getText = ()=>{
+      return this.state.text;
+    }
   }
 
   render() {

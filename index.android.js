@@ -18,6 +18,11 @@ import {
 
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignUpPage';
+import StartPage from './Pages/StartPage';
+import JoinPage from './Pages/JoinPage';
+import WaitPage from './Pages/WaitPage';
+import SettingsPage from './Pages/SettingsPage';
 
 class WordMerge extends Component {
   constructor(props){
@@ -27,9 +32,9 @@ class WordMerge extends Component {
     return (
        <Navigator
           initialRoute={{
-            page: "Home",
-            data:{ id: 1, name: 'Tai Lopez', wins: '27', pic: require('./images/tai.png') }
-        }}
+            page: "Settings",
+            data:{mode:"Zen"}
+          }}
           renderScene={(route, navigator) => {
 
             navigate = function(p,d){
@@ -53,14 +58,19 @@ class WordMerge extends Component {
                   return (<HomePage nav={navigate}/>);
               case "Login":
                   return (<LoginPage nav={navigate} back={back}/>);
-              // case "SignUp":
-              //     return (<SignUpPage/>);
-              // case "Start":
-              //     return (<StartPage/>);
+              case "SignUp":
+                  return (<SignUpPage nav={navigate} back={back}/>);
+              case "Start":
+                  return (<StartPage nav={navigate} back={back}/>);
+              case "Join":
+                  return (<JoinPage nav={navigate} back={back}/>);
+              case "Wait":
+                  return (<WaitPage nav={navigate} back={back} mode={route.data.mode}/>);
+              case "Settings":
+                  return (<SettingsPage nav={navigate} back={back} mode={route.data.mode}/>);
               // case "GameSettings":
               //     return (<GameSettingsPage classic={route.data.classic}/>);
-              // case "LobbyAny":
-              //     return (<LobbyAnyPage classic={route.data.classic}/>);
+
               // case "LobbyFriend":
               //     return (<LobbyAnyPage friend={route.data}/>);
               // case "LobbyMake":
@@ -80,7 +90,7 @@ class WordMerge extends Component {
               // case "Results":
               //     return (<ResultPage friend={route.data.friend} won={route.data.won}/>);
               default:
-                  return(<HomePage nav={navigate} back={back}/>);
+                  return(<StartPage nav={navigate} back={back}/>);
             }
 
         }}
