@@ -23,7 +23,6 @@ export default class LoginPage extends Component {
     }
   }
   render() {
-    var dims = Dimensions.get('window');
     var inputs = this.formManager.getInputs();
     return (
       <View>

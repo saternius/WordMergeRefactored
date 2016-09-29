@@ -6,31 +6,17 @@ import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import Network from '../Logic/Network'
-
-export default class WaitPage extends Component {
+export default class MakePage extends Component {
   constructor(props){
     super(props);
     this.state = {
       mode: this.props.mode,
-      dots:0,
-      error:false,
+      roomCode:Network.genRoom(this.props.mode),
     }
 
     this.dotMaker = setInterval(() => {
         this.setState({dots:(this.state.dots+1)});
     }, 500);
-
-    Network.waitForPlayer((con)=>{
-      if(con.status==200){
-        var nextNav = (this.state.mode==="zen")?"Zen":"Classic";
-        this.setState({startGame:true});
-        setTimeout(()=>{
-          this.props.nav(nextNav,con);
-        },800)
-      }else{
-        this.setState({error:true});
-      }
-    });
   }
 
   componentWillUnmount(){
@@ -46,18 +32,15 @@ export default class WaitPage extends Component {
     console.log(this.state.dots);
     var subject = this.props.friend === undefined?"another player":this.props.friend.name
     var hoverPic = this.state.startGame?require('../images/party.png'):require('../images/alone.png');
-    var error = this.state.error?"An Error occured..":"";
-
-    var dispText = this.state.startGame?subject+" joined!":"Waiting for "+subject+" to join"+dots;
     return (
       <View>
         <WallPaper/>
         <NavigationBar nav={this.props.nav} back={this.props.back}/>
-        <HoverPic pic={hoverPic} l={30} w={280} h={250} vW={320} shakeMag={5}/>
+        <HoverPic pic={hoverPic} l={10} w={250} h={250}/>
         <View style={this.styles.textViewContainer} >
             <View style = {this.styles.textView}>
-              <Text style={this.styles.textStyle}>{dispText}</Text>
-              <Text style={this.styles.textStyle}>{error}</Text>
+              <Text style={this.styles.textStyle}>{"Room Code"}</Text>
+              <Text style={[this.styles.textStyle,{fontSize:50}]}>{this.state.roomCode}</Text>
             </View>
         </View>
       </View>

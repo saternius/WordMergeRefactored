@@ -102,14 +102,11 @@ export default class MyInput extends MyComponent {
 
     var textView = [styles.defaultInputView,{padding:0,height:50}];
     if(this.props.type==="gameInput"){
-      textView.push(styles.gameInputView);
       if(this.props.classic){
         textView.push({width:275});
+      }else{
+        textView.push({width:325});
       }
-      textStyle=styles.gameInputText;
-        if(this.state.removeDiv){
-          textStyle = styles.gameTextInputFocus;
-        }
     }
 
     return (

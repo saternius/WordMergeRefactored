@@ -23,6 +23,8 @@ import StartPage from './Pages/StartPage';
 import JoinPage from './Pages/JoinPage';
 import WaitPage from './Pages/WaitPage';
 import SettingsPage from './Pages/SettingsPage';
+import MakePage from './Pages/MakePage';
+import ZenPage from './Pages/ZenPage';
 
 class WordMerge extends Component {
   constructor(props){
@@ -32,8 +34,8 @@ class WordMerge extends Component {
     return (
        <Navigator
           initialRoute={{
-            page: "Settings",
-            data:{mode:"Zen"}
+            page: "Zen",
+            data:{player:{ id: 1, name: 'Tai Lopez', wins: '27', pic: require('./images/tai.png') }}
           }}
           renderScene={(route, navigator) => {
 
@@ -68,27 +70,10 @@ class WordMerge extends Component {
                   return (<WaitPage nav={navigate} back={back} mode={route.data.mode}/>);
               case "Settings":
                   return (<SettingsPage nav={navigate} back={back} mode={route.data.mode}/>);
-              // case "GameSettings":
-              //     return (<GameSettingsPage classic={route.data.classic}/>);
-
-              // case "LobbyFriend":
-              //     return (<LobbyAnyPage friend={route.data}/>);
-              // case "LobbyMake":
-              //     return (<LobbyMakePage classic={route.data.classic}/>);
-              // case "LobbyJoin":
-              //     return (<LobbyJoinPage classic={route.data.classic}/>);
-              // case "Friends":
-              //     return (<FriendsPage/>);
-              // case "Achievements":
-              //     return (<AchievementsPage/>);
-              // case "Instructions":
-              //     return (<InstructionsPage/>);
-              // case "Classic":
-              //     return (<ClassicPage friend={route.data}/>);
-              // case "Zen":
-              //     return (<ZenPAge friend={route.data}/>);
-              // case "Results":
-              //     return (<ResultPage friend={route.data.friend} won={route.data.won}/>);
+              case "Make":
+                  return (<MakePage nav={navigate} back={back} mode={route.data.mode}/>);
+              case "Zen":
+                  return (<ZenPage nav={navigate} back={back} player={route.data.player}/>);
               default:
                   return(<StartPage nav={navigate} back={back}/>);
             }

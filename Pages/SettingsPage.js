@@ -17,8 +17,8 @@ export default class StartPage extends Component {
         <View style={[{position:"absolute",borderWidth:0,width:dims.width,height:260,top:335,zIndex:22,justifyContent: 'space-between',}]}>
           <Button text={"Any "+this.props.mode} tint="bright" onclick={()=>{return this.props.nav("Wait",{mode:this.props.mode})}}/>
           <Button text="Make Room" onclick={()=>{return this.props.nav("Make",{mode:this.props.mode})}}/>
-          <Button text="Instructions" tint="pale" onclick={()=>{return this.props.nav("Instructions",{mode:this.props.mode})}}/>
-          <Button text="Challange" tint="facebook" onclick={()=>{return this.props.nav("Challange",{mode:this.props.mode})}}/>
+          <Button text="Instructions" tint="pale" onclick={()=>{/*return this.props.nav("Instructions",{mode:this.props.mode})*/}}/>
+          <Button text="Challange" tint="facebook" onclick={()=>{/*return this.props.nav("Challange",{mode:this.props.mode})*/}}/>
         </View>
       </View>
     )

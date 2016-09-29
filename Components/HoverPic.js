@@ -13,7 +13,6 @@ export default class HoverPic extends MyComponent {
       h:200,
       t:45,
       l:0,
-      pic: require('../images/icon.png'),
       p:"absolute",
       vW:360,
       vH:400,
@@ -67,7 +66,7 @@ export default class HoverPic extends MyComponent {
             ]
           }
         ]}>
-      	   <Image style={{width:this.state.w,height:this.state.h}} source={this.state.pic}/>
+      	   <Image style={{width:this.state.w,height:this.state.h}} source={this.props.pic}/>
         </Animated.View>
       </View>
       )
