@@ -48,14 +48,14 @@ export default class WordBubble extends Component {
 	}
 
   render() {
-
+    var styles = this.styles;
 		var bubbleStyle = [styles.bubbleStyle,{backgroundColor:this.state.color}];
 		var bubbleShadow= [styles.bubbleShadow,{backgroundColor:this.state.shadowColor}];
 		var bubbleTextStyle = [styles.bubbleTextStyle,{top:2,fontSize:this.state.fontSize,fontFamily:"baloo",fontWeight:"normal"}];
 		var containerStyle = [styles.bubbleContainer];
 		var bubblePosStyle = this.props.guest?[styles.centerGuestContent]:[styles.centerContent];
 		var wordDisp = this.state.hide?"?????":this.props.word;
-		var pic = this.state.guest?require('./images/arrowHeadDown.png'):require('./images/arrowHeadUp.png');
+		var pic = this.state.guest?require('../images/arrowHeadDown.png'):require('../images/arrowHeadUp.png');
 		var picStyle = this.state.guest?{
 			position:"absolute",
 			width:20,
@@ -109,5 +109,52 @@ export default class WordBubble extends Component {
       backgroundColor:"#e69100",
 
     },
+    bubbleShadow:{
+      position:"absolute",
+      paddingLeft:10,
+      paddingRight:10,
+      paddingTop:0,
+      paddingBottom:0,
+      borderRadius:10,
+      top:13,
+      left:2,
+      backgroundColor:"#a16000",
+  },
+  bubbleTextStyle:{
+    fontSize:28,
+    fontFamily:"Trebuchet",
+    fontWeight:"bold",
+  },
+  bubbleContainer:{
+    position:"absolute",
+    width:180,
+    height:240,
+    right:0,
+  },
+  centerGuestContent:{
+    position:"absolute",
+    left:0,
+    top:0,
+    zIndex:999,
+    height:240,
+    paddingRight:10,
+    paddingTop:10,
+    paddingBottom:10,
+    paddingLeft:0,
+    width:200,
+  },
+  centerContent:{
+    position:"absolute",
+    left:0,
+    top:172,
+    zIndex:999,
+    height:70,
+    paddingRight:10,
+    paddingTop:10,
+    paddingBottom:10,
+    paddingLeft:0,
+    width:200,
+  },
+
   });
 }

@@ -103,7 +103,7 @@ export default class MyInput extends MyComponent {
     var textView = [styles.defaultInputView,{padding:0,height:50}];
     if(this.props.type==="gameInput"){
       if(this.props.classic){
-        textView.push({width:275});
+        textView.push({width:275,left:-35});
       }else{
         textView.push({width:325});
       }

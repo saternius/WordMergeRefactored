@@ -25,6 +25,8 @@ import WaitPage from './Pages/WaitPage';
 import SettingsPage from './Pages/SettingsPage';
 import MakePage from './Pages/MakePage';
 import ZenPage from './Pages/ZenPage';
+import ClassicPage from './Pages/ClassicPage';
+import ResultsPage from './Pages/ResultsPage';
 
 class WordMerge extends Component {
   constructor(props){
@@ -34,8 +36,8 @@ class WordMerge extends Component {
     return (
        <Navigator
           initialRoute={{
-            page: "Zen",
-            data:{player:{ id: 1, name: 'Tai Lopez', wins: '27', pic: require('./images/tai.png') }}
+            page: "Classic",
+            data:{player:{ id: 1, name: 'Tai Lopez', wins: '27', pic:require('./images/tai.png') }}
           }}
           renderScene={(route, navigator) => {
 
@@ -74,6 +76,10 @@ class WordMerge extends Component {
                   return (<MakePage nav={navigate} back={back} mode={route.data.mode}/>);
               case "Zen":
                   return (<ZenPage nav={navigate} back={back} player={route.data.player}/>);
+              case "Classic":
+                  return (<ClassicPage nav={navigate} back={back} player={route.data.player}/>);
+              case "Results":
+                  return (<ResultsPage nav={navigate} back={back} data={route.data}/>);
               default:
                   return(<StartPage nav={navigate} back={back}/>);
             }

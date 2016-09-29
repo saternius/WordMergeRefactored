@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, ScrollView, Dimensions, StyleSheet } from 'react-native';
 
 import WordBubble from '../Components/WordBubble';
-import Hangman from '../Components/Hangman';
+import FlagGirl from '../Components/FlagGirl';
 import Flasher from '../Components/Flasher';
-import ZenGame from '../Logic/ZenGame';
+import ClassicGame from '../Logic/ClassicGame';
 import GuestBar from '../Components/GuestBar';
 import InputBar from '../Components/InputBar';
 
-export default class ZenPage extends Component {
+export default class ClassicPage extends Component {
 
   constructor(props){
     super(props);
@@ -19,7 +19,7 @@ export default class ZenPage extends Component {
       guestWords:[],
       hide:true,
     }
-    this.Game = new ZenGame(this);
+    this.Game = new ClassicGame(this);
   }
 
   render() {
@@ -53,8 +53,9 @@ export default class ZenPage extends Component {
             {guestText}
           </Text>
         </View>
-        <Hangman ref="man"/>
-        <InputBar ref="myInput" classic={false} onSubmit={this.Game.submitWord} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
+
+        <FlagGirl ref="girl"/>
+        <InputBar ref="myInput" classic={true} onSubmit={this.Game.submitWord} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
         <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:640,padding:0}]} contentContainerStyle={{}}
         onContentSizeChange={(contentWidth, contentHeight)=>{
           this.refs["bubbleScroller"].scrollTo({x:contentWidth});
@@ -62,14 +63,14 @@ export default class ZenPage extends Component {
            <View style={guestFullContainerStyle}>
               {
                 this.state.guestWords.map((word) => (
-                  <WordBubble ref={"gBub_"+word.id} spike={true} key={"gBubble_"+word.id} word={word.word} num={this.state.numWords} x={word.x} y={word.y} color={word.color} shadowColor={word.shadowColor} id={word.id} guest={true} hide={word.hide}/>
+                  <WordBubble ref={"gBub_"+word.id} spike={false} key={"gBubble_"+word.id} word={word.word} num={this.state.numWords} x={word.x} y={word.y} color={word.color} shadowColor={word.shadowColor} id={word.id} guest={true} hide={word.hide}/>
                 ))
               }
            </View>
            <View style={myFullContainerStyle}>
              {
                this.state.myWords.map((word) => (
-                 <WordBubble ref={"bub_"+word.id} spike={true} key={"bubble_"+word.id} word={word.word} num={this.state.numWords} x={word.x} y={word.y} color={word.color} shadowColor={word.shadowColor} id={word.id} guest={false}/>
+                 <WordBubble ref={"bub_"+word.id} spike={false} key={"bubble_"+word.id} word={word.word} num={this.state.numWords} x={word.x} y={word.y} color={word.color} shadowColor={word.shadowColor} id={word.id} guest={false}/>
                ))
              }
            </View>

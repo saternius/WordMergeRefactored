@@ -26,7 +26,7 @@ export default class InputBar extends Component {
               </Text>
             </View>;
       }else{
-        barContent = <MyInput type="gameInput" classic={this.props.classic} text="Type A Word!" typing={this.props.typing} ref="myInput" fin={this.props.onSubmit} focusFunc={()=>{}} blurFunc={()=>{}}/>;
+        barContent = <MyInput type="gameInput" classic={this.props.classic} text="Type A Word!" placeholder="Type A Word!" typing={this.props.typing} ref="myInput" fin={this.props.onSubmit} focusFunc={()=>{}} blurFunc={()=>{}}/>;
       }
       var dims = Dimensions.get('window');
       return(
@@ -61,6 +61,7 @@ export default class InputBar extends Component {
           backgroundColor: "#13453e",
         },
         inputBarText:{
+          top:-8,
           fontSize:26,
           fontFamily:"Trebuchet",
           color:"#f7ffff",

@@ -29,7 +29,6 @@ export default class MakePage extends Component {
     for(var i=0; i<this.state.dots%5;i++){
       dots+=".";
     }
-    console.log(this.state.dots);
     var subject = this.props.friend === undefined?"another player":this.props.friend.name
     var hoverPic = this.state.startGame?require('../images/party.png'):require('../images/alone.png');
     return (
