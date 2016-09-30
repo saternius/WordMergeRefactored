@@ -4,7 +4,7 @@ export default class FormManager{
   constructor(parent,inputDefs,cb){
     this.inputs = [];
     this.refs = {};
-
+    this.par = parent;
     this.isValid = (input,type)=>{
       return true;
     }
@@ -45,11 +45,11 @@ export default class FormManager{
     return (this.inputs);
   }
 
-  submitIfFilled = ()=>{
-    for(var i in this.refs){
-      this.submit(i);
-      return;
+  getInputVals(){
+    var ret = [];
+    for(var ref in this.refs){
+      ret.push(this.par.refs[ref].state.text);
     }
-
+    return ret;
   }
 }

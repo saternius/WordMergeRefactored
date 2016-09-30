@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Animated, Dimensions} from 'react-native';
 
-var self;
 export default class Game{
   constructor(page){
-    self = this;
     this.page = page;
     this.numWords=0;
     this.totGuestShift=0;
@@ -212,8 +210,8 @@ export default class Game{
   }
 
   submitWord(word){
-    self.page.refs["myInput"].clearInput();
-    self.pushWord(true,word);
+    this.page.refs["myInput"].clearInput();
+    this.pushWord(true,word);
   }
 
   guestStartsTyping = ()=>{
@@ -243,8 +241,8 @@ export default class Game{
       setTimeout(()=>{ctx.recieveWord(lopezWords[0])},2000);
       var i=0;
       this.nextRound = ()=>{
-        setTimeout(startTyping,2000);
-        setTimeout(()=>{ctx.recieveWord(lopezWords[i])},2500);
+        setTimeout(startTyping,4000);
+        setTimeout(()=>{ctx.recieveWord(lopezWords[i])},5500);
         i++;
       }
   });

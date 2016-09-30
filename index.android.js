@@ -12,9 +12,7 @@ import {
   View,
   Navigator,
   AsyncStorage,
-
 } from 'react-native';
-
 
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
@@ -36,7 +34,7 @@ class WordMerge extends Component {
     return (
        <Navigator
           initialRoute={{
-            page: "Classic",
+            page: "Home",
             data:{player:{ id: 1, name: 'Tai Lopez', wins: '27', pic:require('./images/tai.png') }}
           }}
           renderScene={(route, navigator) => {
@@ -55,7 +53,6 @@ class WordMerge extends Component {
             back = function(){
                 navigator.pop();
             };
-
 
             switch(route.page){
               case "Home":

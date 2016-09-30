@@ -7,6 +7,7 @@ import Flasher from '../Components/Flasher';
 import ClassicGame from '../Logic/ClassicGame';
 import GuestBar from '../Components/GuestBar';
 import InputBar from '../Components/InputBar';
+import TimeBar from '../Components/TimeBar';
 
 export default class ClassicPage extends Component {
 
@@ -54,9 +55,7 @@ export default class ClassicPage extends Component {
           </Text>
         </View>
 
-        <FlagGirl ref="girl"/>
-        <InputBar ref="myInput" classic={true} onSubmit={this.Game.submitWord} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
-        <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:640,padding:0}]} contentContainerStyle={{}}
+              <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:640,padding:0}]} contentContainerStyle={{}}
         onContentSizeChange={(contentWidth, contentHeight)=>{
           this.refs["bubbleScroller"].scrollTo({x:contentWidth});
         }}>
@@ -75,6 +74,9 @@ export default class ClassicPage extends Component {
              }
            </View>
         </ScrollView>
+        <TimeBar outOfTime={this.Game.outOfTime.bind(this.Game)} ref="timeBar"/>
+        <InputBar ref="myInput" classic={true} onSubmit={this.Game.submitWord.bind(this.Game)} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
+        <FlagGirl ref="girl"/>
     </View>
     )
   }

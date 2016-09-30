@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { Animated, Dimensions} from 'react-native';
 import Game from './Game';
-var self;
 export default class ClassicGame extends Game{
   constructor(page){
     super(page);
     self = this;
     this.gameType = "Classic";
+    this.numMatched = 0;
   }
 
   recieveWord(word){
@@ -18,8 +18,8 @@ export default class ClassicGame extends Game{
 
 
   submitWord(word){
-    if(!self.wordRecieved){
-      self.page.refs["girl"].hide();
+    if(!this.wordRecieved){
+      this.page.refs["girl"].hide();
     }
     super.submitWord(word);
   }
@@ -31,9 +31,12 @@ export default class ClassicGame extends Game{
 
   handleMatch(){
     this.page.refs["flasher"].flashSuccess();
-    //this.makeCurBubbleGreen();
-    this.pushN=0;
-
+    this.makeCurBubbleGreen();
+    setTimeout(()=>{
+      this.pushN=-1;
+      this.nextRound();
+    },600);
+    this.numMatched++;
   }
 
   nextRound(){
@@ -41,6 +44,10 @@ export default class ClassicGame extends Game{
     if(this.pushN>5){
       this.pushN=5;
     }
+  }
+
+  outOfTime(){
+    this.page.props.nav("Results",{player:this.page.props.player, mode:this.gameType, matched:this.numMatched});
   }
 
 }

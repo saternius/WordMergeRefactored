@@ -54,7 +54,7 @@ export default class ZenPage extends Component {
           </Text>
         </View>
         <Hangman ref="man"/>
-        <InputBar ref="myInput" classic={false} onSubmit={this.Game.submitWord} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
+        <InputBar ref="myInput" classic={false} onSubmit={this.Game.submitWord.bind(this.Game)} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
         <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:640,padding:0}]} contentContainerStyle={{}}
         onContentSizeChange={(contentWidth, contentHeight)=>{
           this.refs["bubbleScroller"].scrollTo({x:contentWidth});

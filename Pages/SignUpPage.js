@@ -7,6 +7,7 @@ import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
 import FormManager from '../Logic/FormManager';
+import Network from '../Logic/Network';
 
 export default class SignUpPage extends Component {
   constructor(props){
@@ -17,12 +18,8 @@ export default class SignUpPage extends Component {
       {type:"password",placeholder:"Password"},
       {type:"password",placeholder:"Confirm Pass"},
     ],()=>{
-      console.log("Insert Finishing Function Here.");
+      Network.signUp(...this.formManager.getInputVals());
     });
-
-    this.submitIfFilled = ()=>{
-      this.formManager.submitIfFilled();
-    }
   }
   render() {
     var inputs = this.formManager.getInputs();
@@ -36,7 +33,7 @@ export default class SignUpPage extends Component {
                 {inputs}
               </View>
               <View style={{top:0,left:0,width:360, borderWidth:0}}>
-                    <Button text="Login" fullWidth={true} onclick={()=>{this.submitIfFilled()}}/>
+                    <Button text="Login" fullWidth={true} onclick={()=>{this.formManager.submitIfFilled}}/>
               </View>
           </View>
       </View>
