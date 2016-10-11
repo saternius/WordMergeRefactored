@@ -5,17 +5,17 @@ import p from '../Logic/P.js';
 export default class Hangman extends Component {
   constructor(props){
     super(props);
-    this.hangImages = [{pic: require('../images/hang_1.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_2.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_3.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_4.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_5.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_6.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_7.png'), width:p.w(75), height:p.h(70), top:0, left:0},
-                      {pic: require('../images/hang_8.png'), width:p.w(75), height:p.h(70), top:p.h(-13), left:p.w(10)}]
-    this.reliefImages = [{pic: require('../images/relief_1.png'), width:p.w(70), height:p.h(75), top:0, left:0},
-                         {pic: require('../images/relief_2.png'), width:p.w(70), height:p.h(75), top:0, left:0},
-                         {pic: require('../images/relief_3.png'), width:p.w(70), height:p.h(75), top:0, left:0}];
+    this.hangImages = [{pic: require('../images/hang_1.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_2.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_3.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_4.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_5.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_6.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_7.png'), width:p.w(75), height:p.w(70), top:0, left:0},
+                      {pic: require('../images/hang_8.png'), width:p.w(75), height:p.w(70), top:p.h(-13), left:p.w(10)}]
+    this.reliefImages = [{pic: require('../images/relief_1.png'), width:p.w(70), height:p.w(75), top:0, left:0},
+                         {pic: require('../images/relief_2.png'), width:p.w(70), height:p.w(75), top:0, left:0},
+                         {pic: require('../images/relief_3.png'), width:p.w(70), height:p.w(75), top:0, left:0}];
     this.state = {
       sprite:this.hangImages,
       frame:0,

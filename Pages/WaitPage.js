@@ -22,7 +22,7 @@ export default class WaitPage extends Component {
 
     Network.waitForPlayer((con)=>{
       if(con.status==200){
-        var nextNav = (this.state.mode==="zen")?"Zen":"Classic";
+        var nextNav = this.state.mode;
         this.setState({startGame:true});
         setTimeout(()=>{
           this.props.nav(nextNav,con);

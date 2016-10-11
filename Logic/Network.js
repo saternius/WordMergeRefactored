@@ -1,7 +1,13 @@
 var host = "http://172.16.179.50:8000/";
 export default class FormManager{
-  static genRoom(mode){
-    return "TAILPZ";
+
+  static genRoom(authToken,gameMode){
+    return new Promise(function(res,rej){
+      post("room/create",{
+        auth_token:auth_token,
+        game_mode:gameMode
+      },res,rej);
+    });
   }
 
   static waitForPlayer(cb){
@@ -54,8 +60,6 @@ function post(endpoint, body, cb, rej) {
 		body = JSON.stringify(body)
   }
 
-  console.log(host+endpoint);
-  console.log(body);
 	fetch(host+endpoint, {
 	  method: 'POST',
 	  headers: {
@@ -69,8 +73,8 @@ function post(endpoint, body, cb, rej) {
     if(res.status==200){
       cb(res)
     }else{
-      console.log(err); rej(err)
+      rej(err)
     }
   }) //calls the callback with the response json
-	.catch((err) => {console.log(err); rej(err)})
+	.catch((err) => {rej(err)})
 }

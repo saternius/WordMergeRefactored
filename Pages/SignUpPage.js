@@ -41,7 +41,7 @@ export default class SignUpPage extends Component {
       <View>
           <WallPaper/>
           <NavigationBar nav={this.props.nav} back={this.props.back}/>
-          <HoverPic pic={require('../images/welcome.png')} w={p.w(200)} h={p.h(200)} shakeMag={p.w(10)}/>
+          <HoverPic pic={require('../images/welcome.png')} w={p.w(200)} h={p.w(200)} shakeMag={p.w(10)}/>
           <View style={[{justifyContent: 'space-between', height:p.h(285), borderWidth:0,top:p.h(250)}]}>
               <View style={{borderWidth:0, height:p.h(210), justifyContent: 'space-between'}}>
                 {inputs}

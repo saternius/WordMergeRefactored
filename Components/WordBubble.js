@@ -48,8 +48,8 @@ export default class WordBubble extends Component {
 
   render() {
     var styles = this.styles;
-		var bubbleStyle = [styles.bubbleStyle,{backgroundColor:this.state.color}];
-		var bubbleShadow= [styles.bubbleShadow,{backgroundColor:this.state.shadowColor}];
+		var bubbleStyle = [styles.bubbleStyle,{backgroundColor:this.state.color,borderWidth:0, top:p.h(8)}];
+		var bubbleShadow= [styles.bubbleShadow,{backgroundColor:this.state.shadowColor,borderWidth:0,top:p.h(11)}];
 		var bubbleTextStyle = [styles.bubbleTextStyle,{top:p.h(2),fontSize:this.state.fontSize,fontFamily:"baloo",fontWeight:"normal"}];
 		var containerStyle = [styles.bubbleContainer];
 		var bubblePosStyle = this.props.guest?[styles.centerGuestContent]:[styles.centerContent];

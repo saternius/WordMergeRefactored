@@ -31,8 +31,8 @@ export default class InputBar extends Component {
       }
       var dims = Dimensions.get('window');
       return(
-          <View style={{position:"absolute",width:dims.width,height:80,top:545,left:0}}>
-            <View style={[styles.inputView,{paddingTop:7}]}>
+          <View style={{position:"absolute",width:dims.width,height:p.h(82),top:p.h(545),left:0}}>
+            <View style={[styles.inputView,{paddingTop:p.h(7)}]}>
               {barContent}
             </View>
             <View style={styles.inputBoxShadow}>
@@ -51,7 +51,7 @@ export default class InputBar extends Component {
           position:"absolute",
           zIndex:69,
           width:p.w(360),
-          height:p.h(70),
+          height:p.h(75),
           top:p.h(5),
           backgroundColor:"#2f4f4c",
         },

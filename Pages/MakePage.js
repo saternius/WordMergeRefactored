@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, StyleSheet } from 'react-native';
+import { View, Text, TouchableHighlight, Navigator, ToastAndroid, Image, TouchableOpacity, Animated, Easing, Dimensions, StyleSheet, AsyncStorage } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
 import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
@@ -10,10 +10,21 @@ import p from '../Logic/P.js';
 export default class MakePage extends Component {
   constructor(props){
     super(props);
+    const mode = this.props.mode;
+    const authToken = AsyncStorage.getItem("auth_token");
+
     this.state = {
-      mode: this.props.mode,
-      roomCode:Network.genRoom(this.props.mode),
+      mode: mode,
+      roomCode:"...",
     }
+
+    ToastAndroid.show("???",500);
+    console.log("auth: "+authToken+", mode: "+mode);
+    Network.genRoom(authToken,mode).then((ret)=>{
+      console.log(ret);
+    }).catch((err)=>{
+      console.log(err);
+    })
 
     this.dotMaker = setInterval(() => {
         this.setState({dots:(this.state.dots+1)});

@@ -63,7 +63,7 @@ class WordMerge extends Component {
                   return (<SignUpPage nav={navigate} back={back}/>);
               case "Start":
                   return (<StartPage nav={navigate} back={back}/>);
-              case "Join":k
+              case "Join":
                   return (<JoinPage nav={navigate} back={back}/>);
               case "Wait":
                   return (<WaitPage nav={navigate} back={back} mode={route.data.mode}/>);
