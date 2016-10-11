@@ -25,6 +25,7 @@ import MakePage from './Pages/MakePage';
 import ZenPage from './Pages/ZenPage';
 import ClassicPage from './Pages/ClassicPage';
 import ResultsPage from './Pages/ResultsPage';
+import Globals from './Logic/Globals'
 
 class WordMerge extends Component {
   constructor(props){

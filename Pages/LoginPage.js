@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, AsyncStorage, ToastAndroid } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
-// import AnimatedIcon from '../AnimatedIcon';
 import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
 import FormManager from '../Logic/FormManager';
 import Network from '../Logic/Network';
-import p from '../Logic/P.js';
+import p from '../Logic/P';
+import Globals from '../Logic/Globals';
 
 export default class LoginPage extends Component {
   constructor(props){
@@ -19,7 +19,7 @@ export default class LoginPage extends Component {
     ],(inputVals)=>{
       Network.logIn(...inputVals).then((res)=>{
         console.log("authToken: "+res.auth_token);
-        AsyncStorage.setItem("auth_token":res.auth_token);
+        Globals.setAuthToken(res.auth_token);
         this.props.nav("Start");
       }).catch((rej)=>{
         console.log("rej..");

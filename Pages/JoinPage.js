@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, StyleSheet } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
-// import AnimatedIcon from '../AnimatedIcon';
 import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
 import p from '../Logic/P.js';
+import Network from '../Logic/Network';
 
 export default class JoinPage extends Component {
   constructor(props){
     super(props);
-    this.joinRoom = ()=>{
-      //nothing
+    this.joinRoom = (code)=>{
+      Network.joinRoom(code).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)});
     }
   }
   render() {

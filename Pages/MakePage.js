@@ -5,23 +5,21 @@ import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import Network from '../Logic/Network';
-import p from '../Logic/P.js';
+import p from '../Logic/P';
+
 
 export default class MakePage extends Component {
   constructor(props){
     super(props);
     const mode = this.props.mode;
-    const authToken = AsyncStorage.getItem("auth_token");
-
     this.state = {
       mode: mode,
       roomCode:"...",
     }
 
-    ToastAndroid.show("???",500);
-    console.log("auth: "+authToken+", mode: "+mode);
-    Network.genRoom(authToken,mode).then((ret)=>{
-      console.log(ret);
+    Network.genRoom(mode).then((room_id)=>{
+      console.log("room_id: "+room_id);
+      this.setState({roomCode:room_id});
     }).catch((err)=>{
       console.log(err);
     })
