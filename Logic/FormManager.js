@@ -5,26 +5,7 @@ export default class FormManager{
     this.inputs = [];
     this.refs = {};
     this.par = parent;
-    this.isValid = (input,type)=>{
-      return true;
-    }
-
-    this.submit = (id)=>{
-      var el = parent.refs[id];
-      if(this.isValid(el.getText(), null)){
-          this.focusOnNextValid();
-      }
-    }
-
-    this.focusOnNextValid = ()=>{
-      for(var i in this.refs){
-          if(parent.refs[i].isEmpty()){
-            parent.refs[i].clearAndFocus();
-            return;
-          }
-      }
-      cb();
-    }
+    this.cb = cb;
 
     for(var i=0; i<inputDefs.length;i++){
       var typingFunc = inputDefs[i].typing!==undefined?inputDefs[i].typing:(()=>{});
@@ -41,6 +22,19 @@ export default class FormManager{
     }
   }
 
+
+  isValid(input,type){
+    //TODO: Make a proper validation method.
+    return true;
+  }
+
+  submit(id){
+    var el = this.par.refs[id];
+    if(this.isValid(el.getText(), null)){
+        this.focusOnNextValid();
+    }
+  }
+
   getInputs = ()=>{
     return (this.inputs);
   }
@@ -52,4 +46,21 @@ export default class FormManager{
     }
     return ret;
   }
+
+  focusOnNextValid(){
+    for(var i in this.refs){
+        if(this.par.refs[i].isEmpty()){
+          this.par.refs[i].clearAndFocus();
+          return;
+        }
+    }
+    this.cb(this.getInputVals());
+  }
+
+  setWarn(refs){
+    for(var i=0;i<refs.length; i++){
+      this.par.refs[refs[i]].warn();
+    }
+  }
+
 }

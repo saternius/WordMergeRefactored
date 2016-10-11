@@ -8,6 +8,7 @@ import HoverPic from '../Components/HoverPic';
 export default class HomePage extends Component {
   render() {
     var dims = Dimensions.get('window');
+    console.log(dims.width+":"+dims.height);
     return (
       <View>
       <WallPaper/>

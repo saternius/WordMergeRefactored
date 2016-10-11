@@ -1,4 +1,4 @@
-var host = "http://172.16.179.50:6969/";
+var host = "http://172.16.179.50:8000/";
 export default class FormManager{
   static genRoom(mode){
     return "TAILPZ";
@@ -19,31 +19,43 @@ export default class FormManager{
   }
 
   static signUp(email,username,password,confirm){
-    if(!email || !username || !password || !confirm) {
-      throw new Error('Insufficient login information');
-      return;
-    }
-    // if(password!==confirm){
-    //   throw new Error('Passwords do not match');
-    // }
+    return new Promise(function (res,rej){
+      if(!email || !username || !password || !confirm) {
+        rej('Insufficient login information');
+        return;
+      }
+      if(password!==confirm){
+        rej('Passwords do not match');
+      }
 
-    post("auth/signup",{
-      email:email,
-      username:username,
-      password:password,
-      image_url:"../images/woot.png"
-    },()=>{
+      post("auth/signup",{
+        email:email,
+        username:username,
+        password:password,
+        image_url:"../images/woot.png"
+      },res,rej);
 
+    })
+  }
+
+  static logIn(username,password){
+    return new Promise((res,rej)=>{
+      post("auth/login",{
+        username:username,
+        password:password
+      },res,rej);
     })
   }
 }
 
 
-function post(endpoint, body, cb) {
+function post(endpoint, body, cb, rej) {
 	if(typeof body === 'object'){
 		body = JSON.stringify(body)
   }
 
+  console.log(host+endpoint);
+  console.log(body);
 	fetch(host+endpoint, {
 	  method: 'POST',
 	  headers: {
@@ -57,8 +69,8 @@ function post(endpoint, body, cb) {
     if(res.status==200){
       cb(res)
     }else{
-      console.log(err); throw new Error(err)
+      console.log(err); rej(err)
     }
   }) //calls the callback with the response json
-	.catch((err) => {console.log(err); throw new Error(err)})
+	.catch((err) => {console.log(err); rej(err)})
 }

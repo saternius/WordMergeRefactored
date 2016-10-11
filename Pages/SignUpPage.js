@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions } from 'react-native';
+import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, ToastAndroid } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
 // import AnimatedIcon from '../AnimatedIcon';
 import Button from '../Components/Button';
@@ -13,12 +13,26 @@ export default class SignUpPage extends Component {
   constructor(props){
     super(props);
     this.formManager = new FormManager(this,[
-      {type:"text",placeholder:"Email"},
-      {type:"text",placeholder:"Username"},
-      {type:"password",placeholder:"Password"},
-      {type:"password",placeholder:"Confirm Pass"},
-    ],()=>{
-      Network.signUp(...this.formManager.getInputVals());
+      {type:"text",placeholder:"Email", ref:"email"},
+      {type:"text",placeholder:"Username", ref:"username"},
+      {type:"password",placeholder:"Password", ref:"password"},
+      {type:"password",placeholder:"Confirm Pass", ref:"confirm"},
+    ],(inputVals)=>{
+      Network.signUp(...inputVals).then(
+        (res)=>{
+          console.log(res);
+          this.props.nav("Home");
+        }
+    ).catch(
+      (rej)=>{
+        if(typeof rej === 'object'){
+          rej = rej.message;
+        }
+        ToastAndroid.show(rej, 1500);
+        if(rej === "Passwords do not match"){
+          this.formManager.setWarn(["password","confirm"]);
+        }
+      });
     });
   }
   render() {
@@ -33,7 +47,7 @@ export default class SignUpPage extends Component {
                 {inputs}
               </View>
               <View style={{top:0,left:0,width:360, borderWidth:0}}>
-                    <Button text="Login" fullWidth={true} onclick={()=>{this.formManager.submitIfFilled}}/>
+                    <Button text="Login" fullWidth={true} onclick={this.formManager.focusOnNextValid.bind(this.formManager)}/>
               </View>
           </View>
       </View>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions } from 'react-native';
+import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, AsyncStorage, ToastAndroid } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
 // import AnimatedIcon from '../AnimatedIcon';
 import Button from '../Components/Button';
@@ -7,6 +7,8 @@ import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
 import FormManager from '../Logic/FormManager';
+import Network from '../Logic/Network';
+
 
 export default class LoginPage extends Component {
   constructor(props){
@@ -14,8 +16,17 @@ export default class LoginPage extends Component {
     this.formManager = new FormManager(this,[
       {type:"text",placeholder:"Username"},
       {type:"password",placeholder:"Password"},
-    ],()=>{
-      console.log("Insert Finishing Function Here.");
+    ],(inputVals)=>{
+      Network.logIn(...inputVals).then((res)=>{
+        console.log("res..");
+        console.log(res);
+        AsyncStorage.setItem("auth_token":res.auth_token);
+        this.props.nav("Start");
+      }).catch((rej)=>{
+        console.log("rej..");
+        console.log(rej);
+        ToastAndroid.show(rej.message,1500);
+      });
     });
 
     this.submitIfFilled = ()=>{

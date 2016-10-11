@@ -8,15 +8,17 @@ export default class MyInput extends MyComponent {
     this.setDefaultState({
       text:"text",
       placeholder: "Placeholder",
+      warn:false,
     });
 
     this.clear = ()=>{
-      this.setState({removeDiv:true,text:""})
+      this.setState({removeDiv:true,text:"", warn:false});
     }
 
     this.clearAndFocus = ()=>{
       this.clear();
       this.refs.nameInput.focus();
+
     }
 
     this.clearAndBlur = ()=>{
@@ -37,6 +39,10 @@ export default class MyInput extends MyComponent {
 
     this.getText = ()=>{
       return this.state.text;
+    }
+
+    this.warn = ()=>{
+      this.setState({warn:true, removeDiv:false});
     }
   }
 
@@ -88,7 +94,13 @@ export default class MyInput extends MyComponent {
     		paddingBottom:5,
     		color:"#b3b3b3",
         borderWidth:0,
-    	}
+    	},
+      warnView:{
+        backgroundColor:"#f2bbbb",
+      },
+      warnText:{
+        color:"red",
+      }
     });
 
     var clearDivStyle = styles.clearDivActive;
@@ -109,6 +121,12 @@ export default class MyInput extends MyComponent {
       }
     }
 
+    var underlineColor = "#e3e3e3";
+
+    if(this.state.warn){
+      textStyle = styles.warnText;
+    }
+
     return (
       <View style={{borderWidth:0, justifyContent:"center",flexDirection:"row"}}>
         <TouchableWithoutFeedback onPressIn={this.clearAndFocus}>
@@ -119,7 +137,7 @@ export default class MyInput extends MyComponent {
             style={[styles.defaultInput,textStyle,{fontWeight:"normal", top:0,fontSize:24,fontFamily:"baloo"}]}
             onChangeText={(t) => { this.setState({text:t})} }
             value={this.state.text}
-            underlineColorAndroid="#e3e3e3"
+            underlineColorAndroid={underlineColor}
             onBlur={this.checkEmpty}
             onFocus={this.props.focusFunc}
             ref="nameInput"

@@ -97,8 +97,16 @@ export default class Button extends Component {
 			extraBottomStyle = {};
 		}
 		var btnStyle = {paddingLeft:1,paddingRight:1,paddingTop:5,paddingBottom:5,borderRadius: 5};
+
+		if(this.props.w!==undefined){
+			myWidth = this.props.w;
+		}
+
+		var t = this.props.t!==undefined?this.props.t:0;
+		var l = this.props.l!==undefined?this.props.l:0;
+
     return (
-			<View style={{borderWidth:0,flexDirection:"row",justifyContent:"center"}}>
+			<View style={{top:t,left:l,borderWidth:0,flexDirection:"row",justifyContent:"center"}}>
 	    	<View style={[{width:myWidth,borderRadius:5,height:63, borderWidth:bW, borderColor:bColor, marginTop:0},extraBS]} elevation={height}>
 	    	<View style={[btnStyle, tintBottom,{position:"absolute",top:4,borderRadius:5, width:myWidth}, extraBottomStyle, moreBS]}>
 	    		<Text style={btnTextStyle}>{" "}</Text>
