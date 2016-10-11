@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Animated, Dimensions} from 'react-native';
+import p from '../Logic/P.js';
 
 export default class Game{
   constructor(page){
@@ -135,7 +136,7 @@ export default class Game{
       id:(nW+1),
       word:w,
       x:0,
-      y:(25*pN)*yDir-5,
+      y:(p.h(25)*pN)*yDir-p.h(5),
       color: "rgb("+(222-pN*6)+","+(222-pN*38)+","+Math.max(0,130-pN*25)+")",
       shadowColor: "rgb("+(170-pN*6)+","+(170-pN*38)+","+Math.max(0,130-pN*25)+")",
       hide:h,

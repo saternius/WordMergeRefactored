@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing, Dimensions, StyleSheet } from 'react-native';
 import NavigationBar from '../Components/NavigationBar';
-// import AnimatedIcon from '../AnimatedIcon';
 import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
-import Network from '../Logic/Network'
+import Network from '../Logic/Network';
+import p from '../Logic/P.js';
 
 export default class WaitPage extends Component {
   constructor(props){
@@ -53,7 +53,7 @@ export default class WaitPage extends Component {
       <View>
         <WallPaper/>
         <NavigationBar nav={this.props.nav} back={this.props.back}/>
-        <HoverPic pic={hoverPic} l={30} w={280} h={250} vW={320} shakeMag={5}/>
+        <HoverPic pic={hoverPic} l={p.w(30)} w={p.w(280)} h={p.h(250)} vW={p.w(320)} shakeMag={p.w(5)}/>
         <View style={this.styles.textViewContainer} >
             <View style = {this.styles.textView}>
               <Text style={this.styles.textStyle}>{dispText}</Text>
@@ -66,9 +66,9 @@ export default class WaitPage extends Component {
 
   styles = StyleSheet.create({
     textViewContainer:{
-      top:300,
+      top:p.h(300),
       justifyContent: 'space-between',
-      height:170
+      height:p.h(170)
     },
     textView:{
       top:0,
@@ -80,9 +80,9 @@ export default class WaitPage extends Component {
         fontWeight:"bold",
         fontFamily:"Trebuchet",
         textShadowColor:"#171f1f",
-        textShadowOffset:{width:1,height:1},
-        textShadowRadius:10,
-        fontSize:20,
+        textShadowOffset:{width:p.w(1),height:p.h(1)},
+        textShadowRadius:p.w(10),
+        fontSize:p.h(20),
       }
   });
 }

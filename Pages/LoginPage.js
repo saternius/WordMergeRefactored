@@ -8,7 +8,7 @@ import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
 import FormManager from '../Logic/FormManager';
 import Network from '../Logic/Network';
-
+import p from '../Logic/P.js';
 
 export default class LoginPage extends Component {
   constructor(props){
@@ -39,12 +39,12 @@ export default class LoginPage extends Component {
       <View>
           <WallPaper/>
           <NavigationBar nav={this.props.nav} back={this.props.back}/>
-          <HoverPic pic={require('../images/welcome.png')} w={200} h={200} shakeMag={10}/>
-          <View style={[{justifyContent: 'space-between', height:200, borderWidth:0,top:250}]}>
-              <View style={{borderWidth:0, height:110, justifyContent: 'space-between'}}>
+          <HoverPic pic={require('../images/welcome.png')} w={p.w(200)} h={p.h(200)} shakeMag={p.w(10)}/>
+          <View style={[{justifyContent: 'space-between', height:p.h(200), borderWidth:0,top:p.h(250)}]}>
+              <View style={{borderWidth:0, height:p.h(110), justifyContent: 'space-between'}}>
                 {inputs}
               </View>
-              <View style={{top:0,left:0,width:360, borderWidth:0}}>
+              <View style={{top:0,left:0,width:p.w(360), borderWidth:0}}>
                     <Button text="Login" fullWidth={true} onclick={()=>{this.submitIfFilled()}}/>
               </View>
           </View>

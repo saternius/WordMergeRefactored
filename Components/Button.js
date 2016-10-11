@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text,TouchableWithoutFeedback, TouchableHighlight,Navigator, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import p from '../Logic/P.js';
 
 //There are just some classes that are not worth refactoring.
 export default class Button extends Component {
@@ -27,11 +28,11 @@ export default class Button extends Component {
  	var tintBottom;
  	var sideImage;
 	var extraBottomStyle = {flexDirection: 'row',justifyContent: 'space-between'};
-	var pressedConfirmStyle = {top:5,opacity:.5};
- 	var btnTextStyle = [{fontSize:27,top:3,fontFamily: "baloo",color:"#FDF5D3",textAlign: 'center',width:200}];
+	var pressedConfirmStyle = {top:p.h(5),opacity:.5};
+ 	var btnTextStyle = [{fontSize:p.h(27),top:p.h(3),fontFamily: "baloo",color:"#FDF5D3",textAlign: 'center',width:p.w(200)}];
 	var colours = ["#007556","#00523d"];
-	var height = 5;
-	var bW = 1;
+	var height = p.h(5);
+	var bW = p.w(1);
 	var extraBS;
 	var moreBS;
   	switch(this.props.tint){
@@ -64,19 +65,19 @@ export default class Button extends Component {
 				tint = {backgroundColor: "#005a7a"};
 				tintBottom = {backgroundColor: "#043661"};
 				colours = ["#005a7a","#004269"];
-  			sideImage = <Image style={{width:30,height:30,position:"absolute",top:14,left:25,}} source={require('../images/fbIcon.png')}/>;
-  			btnTextStyle.push({left:22});
+  			sideImage = <Image style={{width:p.w(30),height:p.h(30),position:"absolute",top:p.h(14),left:p.w(25),}} source={require('../images/fbIcon.png')}/>;
+  			btnTextStyle.push({left:p.w(22)});
   			break;
 			case "chal":
-				tint = {backgroundColor: "#660200",width:180,height:42,left:95,top:9};
-				tintBottom = {backgroundColor: "#360000",width:50,height:42,left:95,top:13,paddingLeft:0,paddingRight:0};
-				extraBottomStyle = {left:0,width:200,paddingTop:8, height:40};
+				tint = {backgroundColor: "#660200",width:p.w(180),height:p.h(42),left:p.h(95),top:p.h(9)};
+				tintBottom = {backgroundColor: "#360000",width:p.w(50),height:p.h(42),left:p.w(95),top:p.h(13),paddingLeft:0,paddingRight:0};
+				extraBottomStyle = {left:0,width:p.w(200),paddingTop:p.h(8), height:p.h(40)};
 				height=5;
-				btnTextStyle.push({top:-3,fontSize:21});
-				pressedConfirmStyle = {top:4,opacity:.5};
+				btnTextStyle.push({top:p.h(-3),fontSize:p.h(21)});
+				pressedConfirmStyle = {top:p.h(4),opacity:.5};
 				bW=0;
-				extraBS={left:95,top:10,width:200,height:45},
-				moreBS={top:5}
+				extraBS={left:p.w(95),top:p.h(10),width:p.w(200),height:p.h(45)},
+				moreBS={top:p.h(5)}
 				tint = {backgroundColor: "#660200"};
 				tintBottom = {backgroundColor: "#240201"};
 				colours = ["#660200","#360000"];
@@ -92,11 +93,11 @@ export default class Button extends Component {
 			tintBottom = {backgroundColor: "transparent"};
   	}
 
-		var myWidth = this.props.fullWidth?270:200;
+		var myWidth = this.props.fullWidth?p.w(270):p.w(200);
 		if(this.props.fullWidth){
 			extraBottomStyle = {};
 		}
-		var btnStyle = {paddingLeft:1,paddingRight:1,paddingTop:5,paddingBottom:5,borderRadius: 5};
+		var btnStyle = {paddingLeft:p.w(1),paddingRight:p.h(1),paddingTop:p.h(5),paddingBottom:p.h(5),borderRadius: p.w(5)};
 
 		if(this.props.w!==undefined){
 			myWidth = this.props.w;
@@ -107,8 +108,8 @@ export default class Button extends Component {
 
     return (
 			<View style={{top:t,left:l,borderWidth:0,flexDirection:"row",justifyContent:"center"}}>
-	    	<View style={[{width:myWidth,borderRadius:5,height:63, borderWidth:bW, borderColor:bColor, marginTop:0},extraBS]} elevation={height}>
-	    	<View style={[btnStyle, tintBottom,{position:"absolute",top:4,borderRadius:5, width:myWidth}, extraBottomStyle, moreBS]}>
+	    	<View style={[{width:myWidth,borderRadius:p.w(5),height:p.h(63), borderWidth:bW, borderColor:bColor, marginTop:0},extraBS]} elevation={height}>
+	    	<View style={[btnStyle, tintBottom,{position:"absolute",top:p.h(4),borderRadius:p.w(5), width:myWidth}, extraBottomStyle, moreBS]}>
 	    		<Text style={btnTextStyle}>{" "}</Text>
 	    	</View>
 	    	<TouchableWithoutFeedback onPressIn={this.pressed} onPressOut={this.released}>

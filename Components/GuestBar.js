@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity,Dimensions, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 var nav;
+import p from '../Logic/P.js';
 export default class GuestBar extends Component {
   constructor(props){
     super(props);
@@ -18,7 +19,7 @@ export default class GuestBar extends Component {
           <LinearGradient colors={colours} >
             <View style={styles.guestBarView}>
               <View>
-                <Image style={[styles.guestBarImage,{borderRadius:10}]} source={this.props.profileDetails.pic}/>
+                <Image style={[styles.guestBarImage,{borderRadius:p.w(10)}]} source={this.props.profileDetails.pic}/>
 
               </View>
               <View>
@@ -33,35 +34,35 @@ export default class GuestBar extends Component {
 
       styles = StyleSheet.create({
         guestText:{
-          fontSize:35,
+          fontSize:p.w(35),
           fontFamily:"Trebuchet",
           fontWeight:"bold",
           textShadowColor:"#171f1f",
-          textShadowOffset:{width:1,height:1},
-          textShadowRadius:10,
+          textShadowOffset:{width:p.w(1),height:p.h(1)},
+          textShadowRadius:p.w(10),
           color:"#cfcfcf",
-          top:10,
+          top:p.h(10),
         },
         smallerGuestText:{
-          fontSize:25,
-          top:18
+          fontSize:p.w(25),
+          top:p.h(18)
         },
         guestBarView:{
           width:Dimensions.get('window').width,
-          height:65,
+          height:p.h(65),
           flexDirection:"row",
           justifyContent:"center",
         },
         guestBarShadow:{
           width:Dimensions.get('window').width,
-          height:6,
+          height:p.h(6),
           backgroundColor: "#13453e",
         },
         guestBarImage:{
-          width:55,
-          height:55,
-          top:7,
-          marginRight:20,
+          width:p.w(55),
+          height:p.h(55),
+          top:p.h(7),
+          marginRight:p.w(20),
         },
       });
 }

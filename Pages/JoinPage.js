@@ -6,6 +6,8 @@ import Button from '../Components/Button';
 import WallPaper from '../Components/WallPaper';
 import HoverPic from '../Components/HoverPic';
 import MyInput from '../Components/MyInput';
+import p from '../Logic/P.js';
+
 export default class JoinPage extends Component {
   constructor(props){
     super(props);
@@ -18,7 +20,7 @@ export default class JoinPage extends Component {
       <View>
         <WallPaper/>
         <NavigationBar nav={this.props.nav} back={this.props.back}/>
-        <HoverPic pic={require('../images/fivesy.png')} l={10} w={300} h={300}/>
+        <HoverPic pic={require('../images/fivesy.png')} l={p.h(10)} w={p.w(300)} h={p.h(300)}/>
         <View style={this.styles.textViewContainer} >
             <View style = {this.styles.textView}>
               <Text style={this.styles.textStyle}>Enter The Room Code</Text>
@@ -36,9 +38,9 @@ export default class JoinPage extends Component {
 
   styles = StyleSheet.create({
     textViewContainer:{
-      top:300,
+      top:p.h(300),
       justifyContent: 'space-between',
-      height:170
+      height:p.h(170)
     },
     textView:{
       top:0,
@@ -51,8 +53,8 @@ export default class JoinPage extends Component {
         fontFamily:"Trebuchet",
         textShadowColor:"#171f1f",
         textShadowOffset:{width:1,height:1},
-        textShadowRadius:10,
-        fontSize:20,
+        textShadowRadius:p.w(10),
+        fontSize:p.h(20),
       }
   });
 }

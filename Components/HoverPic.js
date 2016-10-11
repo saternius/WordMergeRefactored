@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing } from 'react-native';
-import MyComponent from './MyComponent'
+import MyComponent from './MyComponent';
+import p from '../Logic/P.js';
 export default class HoverPic extends MyComponent {
   constructor(props){
     super(props);
@@ -8,14 +9,14 @@ export default class HoverPic extends MyComponent {
       clockT:new Animated.Value(Math.floor(Math.random()*6900)),
       imageY:new Animated.Value(0),
       imageRot:new Animated.Value(0),
-      shakeMag:10,
-      w:200,
-      h:200,
-      t:45,
+      shakeMag:p.w(10),
+      w:p.w(200),
+      h:p.h(200),
+      t:p.h(45),
       l:0,
       p:"absolute",
-      vW:360,
-      vH:400,
+      vW:p.w(360),
+      vH:p.h(400),
     });
   }
 
@@ -55,7 +56,7 @@ export default class HoverPic extends MyComponent {
           {
             width:this.state.w,
             height:this.state.h,
-            top:20,
+            top:p.h(20),
             left:0,
             borderWidth:0,
             transform: [

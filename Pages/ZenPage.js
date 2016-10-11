@@ -7,6 +7,8 @@ import Flasher from '../Components/Flasher';
 import ZenGame from '../Logic/ZenGame';
 import GuestBar from '../Components/GuestBar';
 import InputBar from '../Components/InputBar';
+import p from '../Logic/P.js';
+
 
 export default class ZenPage extends Component {
 
@@ -28,12 +30,12 @@ export default class ZenPage extends Component {
     var styles = this.styles;
     var guestActionStyle = [styles.guestTypeContainer];
     var guestActionTextStyle = [styles.guestTypeText];
-    var guestFullContainerStyle = [styles.fullGuestBubbleContainer,{position:"relative",width:winWidth,height:232,top:0,right:0,zIndex:10}];
-    var myFullContainerStyle = [styles.fullBubbleContainer,{position:"absolute",width:winWidth,height:232,top:232,right:0,zIndex:10}];
+    var guestFullContainerStyle = [styles.fullGuestBubbleContainer,{position:"relative",width:winWidth,height:p.h(232),top:0,right:0,zIndex:10}];
+    var myFullContainerStyle = [styles.fullBubbleContainer,{position:"absolute",width:winWidth,height:p.h(232),top:p.h(232),right:0,zIndex:10}];
 
     var guestText = this.props.player.name + " is typing...";
     if(this.state.guestTyping){
-      guestFullContainerStyle.push({top:20});
+      guestFullContainerStyle.push({top:p.h(20)});
     }else{
       guestActionTextStyle.push(styles.hiddenGameText);
       guestText = "";
@@ -55,7 +57,7 @@ export default class ZenPage extends Component {
         </View>
         <Hangman ref="man"/>
         <InputBar ref="myInput" classic={false} onSubmit={this.Game.submitWord.bind(this.Game)} hideInput={this.state.submittedWord} guest={this.props.player.name}/>
-        <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:640,padding:0}]} contentContainerStyle={{}}
+        <ScrollView ref="bubbleScroller" horizontal={true} style={[styles.gameBody,{position:"absolute",width:winWidth,height:p.h(640),padding:0}]} contentContainerStyle={{}}
         onContentSizeChange={(contentWidth, contentHeight)=>{
           this.refs["bubbleScroller"].scrollTo({x:contentWidth});
         }}>
@@ -81,14 +83,14 @@ export default class ZenPage extends Component {
   styles = StyleSheet.create({
     guestTypeContainer:{
       position:"absolute",
-      top:70,
+      top:p.h(70),
       left:0,
       zIndex:999,
       width:Dimensions.get('window').width,
       backgroundColor:"#c2eded",
     },
     guestTypeText:{
-      fontSize:20,
+      fontSize:p.w(20),
       fontFamily:"Trebuchet",
       fontWeight:"bold",
       color:"#75999c",
@@ -99,10 +101,10 @@ export default class ZenPage extends Component {
     fullGuestBubbleContainer:{
       position:"absolute",
       zIndex:1,
-      top:100,
+      top:p.h(100),
       left:0,
       width:Dimensions.get('window').width,
-      height:235,
+      height:p.h(235),
       flexDirection:"row",
     },
   });

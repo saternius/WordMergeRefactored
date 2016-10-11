@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity,Dimensions, StyleSheet } from 'react-native';
 import MyInput from './MyInput';
+import p from '../Logic/P.js';
 
 export default class InputBar extends Component {
   constructor(props){
@@ -44,31 +45,31 @@ export default class InputBar extends Component {
         centerInputBar:{
           flexDirection:"row",
           justifyContent:"center",
-          top:14,
+          top:p.h(14),
         },
         inputView:{
           position:"absolute",
           zIndex:69,
-          width:360,
-          height:70,
-          top:5,
+          width:p.w(360),
+          height:p.h(70),
+          top:p.h(5),
           backgroundColor:"#2f4f4c",
         },
         inputBoxShadow:{
           position:"absolute",
-          width:360,
-          height:10,
+          width:p.w(360),
+          height:p.h(10),
           backgroundColor: "#13453e",
         },
         inputBarText:{
-          top:-8,
-          fontSize:26,
+          top:p.h(-8),
+          fontSize:p.h(26),
           fontFamily:"Trebuchet",
           color:"#f7ffff",
           fontWeight:"bold",
           textShadowColor:"#171f1f",
-          textShadowOffset:{width:1,height:1},
-          textShadowRadius:10,
+          textShadowOffset:{width:p.w(1),height:p.h(1)},
+          textShadowRadius:p.w(10),
         },
       });
 }

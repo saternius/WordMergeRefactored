@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, StyleSheet, Animated, Easing, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MyComponent from './MyComponent'
+import p from '../Logic/P.js';
 export default class WallPaper extends MyComponent {
 
   constructor(props){
@@ -68,9 +69,9 @@ export default class WallPaper extends MyComponent {
                           <Animated.View style={[
                             {
                               position:"absolute",
-                              width:800,
-                              height:1206,
-                              top:265,
+                              width:p.w(800),
+                              height:p.h(1206),
+                              top:p.h(265),
                               left:0,
                               transform: [
                                 {translateX: this.state.lettersX},
@@ -78,7 +79,7 @@ export default class WallPaper extends MyComponent {
                               ]
                             }
                           ]}>
-                              <Image style={{position:"absolute",width:614,height:486,top:0,left:-20,opacity:.15}} source={this.state.bgPic}/>
+                              <Image style={{position:"absolute",width:p.w(614),height:p.h(486),top:0,left:p.h(-20),opacity:.15}} source={this.state.bgPic}/>
                           </Animated.View>;
       return(
               <LinearGradient colors={this.state.colors} style={this.state.style.myStyle}>

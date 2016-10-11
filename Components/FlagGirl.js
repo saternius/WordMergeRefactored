@@ -1,26 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, Animated, Easing } from 'react-native';
+import p from '../Logic/P.js';
 
 export default class FlagGirl extends Component {
   constructor(props){
     super(props);
-    this.flagImages = [{pic: require('../images/flagHolder_1.png'), width:75, height:90, top:20, left:42},
-                      {pic: require('../images/flagHolder_2.png'), width:75, height:90, top:20, left:42},
-                      {pic: require('../images/flagHolder_3.png'), width:75, height:90, top:20, left:42},
-                      {pic: require('../images/flagHappy.png'), width:75, height:90, top:20, left:42}
+    this.flagImages = [{pic: require('../images/flagHolder_1.png'), width:p.w(75), height:p.w(90), top:p.w(20), left:p.w(42)},
+                      {pic: require('../images/flagHolder_2.png'), width:p.w(75), height:p.w(90), top:p.w(20), left:p.w(42)},
+                      {pic: require('../images/flagHolder_3.png'), width:p.w(75), height:p.w(90), top:p.w(20), left:p.w(42)},
+                      {pic: require('../images/flagHappy.png'), width:p.w(75), height:p.w(90), top:p.w(20), left:p.w(42)}
                       ]
     this.state = {
       sprite:this.flagImages,
       frame:0,
       opacity:new Animated.Value(0),
-      yShift:new Animated.Value(90),
+      yShift:new Animated.Value(p.h(90)),
     }
 
     this.hide = ()=>{
       Animated.timing(
         this.state.yShift,
         {
-          toValue: 90,
+          toValue: p.h(90),
           duration: 400,
         }
       ).start();
@@ -50,7 +51,7 @@ export default class FlagGirl extends Component {
   render() {
     var img = this.state.sprite[this.state.frame];
     var pic = img.pic;
-    var viewStyle = [{top:527,left:245, width:150,height:100, position:"absolute", zIndex:1100, justifyContent:"center",flexDirection:"row"}];
+    var viewStyle = [{top:p.h(527),left:p.w(245), width:p.w(150),height:p.h(100), position:"absolute", zIndex:1100, justifyContent:"center",flexDirection:"row"}];
     var imageStyle = [{width:img.width,height:img.height,left:img.left,top:img.top,position:"absolute", zIndex:0}];
 
     return (

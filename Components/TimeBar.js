@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight,Navigator, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 var nav;
+import p from '../Logic/P.js';
 export default class TimeBar extends Component {
   constructor(props){
     super(props);
@@ -30,7 +31,7 @@ export default class TimeBar extends Component {
   }
 
   render() {
-      var dW = Math.floor(360*(this.state.timeLeft/this.fullTime));
+      var dW = Math.floor(p.w(360)*(this.state.timeLeft/this.fullTime));
       var dStyle = StyleSheet.create({
         fillWidth: {
           width: dW,
@@ -38,9 +39,9 @@ export default class TimeBar extends Component {
       });
       var tW = Dimensions.get("window").width;
       return(
-        <View style={[{position:"absolute", width:tW, height:10, top:535, zIndex:1000}]}>
-            <View style={{backgroundColor:"white", position:"absolute", width:tW, height:10, zIndex:1}}/>
-            <View style={[{backgroundColor:"red", position:"absolute", width:tW, height:10, zIndex:3,},dStyle.fillWidth]}/>
+        <View style={[{position:"absolute", width:tW, height:p.h(10), top:p.h(535), zIndex:1000}]}>
+            <View style={{backgroundColor:"white", position:"absolute", width:tW, height:p.h(10), zIndex:1}}/>
+            <View style={[{backgroundColor:"red", position:"absolute", width:tW, height:p.h(10), zIndex:3,},dStyle.fillWidth]}/>
         </View>
         )
       }

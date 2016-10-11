@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {TouchableWithoutFeedback, View, AppRegistry, TextInput, Text, StyleSheet } from 'react-native';
 import MyComponent from './MyComponent'
+import p from '../Logic/P.js';
 export default class MyInput extends MyComponent {
 
   constructor(props) {
@@ -53,45 +54,45 @@ export default class MyInput extends MyComponent {
         color:"black",
       },
       clearDivActive:{
-        width:240,
-        height:48,
+        width:p.w(240),
+        height:p.h(48),
         backgroundColor:"red",
         position:"absolute",
         zIndex:2,
         opacity:.01
       },
       clearDivHidden:{
-        width:240,
-        height:48,
+        width:p.w(240),
+        height:p.h(48),
         backgroundColor:"red",
         position:"absolute",
         zIndex:-1,
         opacity:.01
       },
       defaultInputView:{
-		    borderRadius: 10,
+		    borderRadius: p.w(10),
     		paddingTop:0,
     		paddingBottom:0,
     		backgroundColor: "#e3e3e3",
-    		marginHorizontal: 20,
+    		marginHorizontal: p.w(20),
     	  borderColor: 'black',
     		borderWidth: 1,
         overflow: 'hidden',
         shadowColor: 'black',
-        shadowOffset: {width: 5, height: 5},
-        shadowRadius: 10,
+        shadowOffset: {width: p.w(5), height: p.h(5)},
+        shadowRadius: p.w(10),
         shadowOpacity: 1.0,
         alignItems:"center",
-        width:270,
+        width:p.w(270),
     	},
     	defaultInput:{
-    		fontSize:20,
+    		fontSize:p.w(20),
     		fontWeight:'bold',
     		fontFamily: "Trebuchet",
     		textAlign: 'center',
-    		width:240,
-    		paddingTop:5,
-    		paddingBottom:5,
+    		width:p.w(240),
+    		paddingTop:p.h(5),
+    		paddingBottom:p.h(5),
     		color:"#b3b3b3",
         borderWidth:0,
     	},
@@ -112,12 +113,12 @@ export default class MyInput extends MyComponent {
     }
     var isPass = (this.props.type==="password" && this.state.text!==this.state.placeholder);
 
-    var textView = [styles.defaultInputView,{padding:0,height:50}];
+    var textView = [styles.defaultInputView,{padding:0,height:p.h(50)}];
     if(this.props.type==="gameInput"){
       if(this.props.classic){
-        textView.push({width:275,left:-35});
+        textView.push({width:p.w(275),left:p.w(-35)});
       }else{
-        textView.push({width:325});
+        textView.push({width:p.w(325)});
       }
     }
 
@@ -134,7 +135,7 @@ export default class MyInput extends MyComponent {
         </TouchableWithoutFeedback>
         <View style={textView}>
           <TextInput
-            style={[styles.defaultInput,textStyle,{fontWeight:"normal", top:0,fontSize:24,fontFamily:"baloo"}]}
+            style={[styles.defaultInput,textStyle,{fontWeight:"normal", top:0,fontSize:p.w(24),fontFamily:"baloo"}]}
             onChangeText={(t) => { this.setState({text:t})} }
             value={this.state.text}
             underlineColorAndroid={underlineColor}
