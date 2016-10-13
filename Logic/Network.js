@@ -1,24 +1,24 @@
 import Globals from '../Logic/Globals';
 
-var host = "http://172.16.179.50:8000/";
+var host = "http://23.251.146.16:8000/";
 var socket = require('socket.io-client')(host);
 
 //Socket listeners
-socket.on('room_ready',()=>{
-  console.log("ready");
-})
-
-socket.on('said_word',()=>{
-  console.log("said word");
-})
-
-socket.on('user_typed',()=>{
-  console.log("user typed");
-})
-
-socket.on('game_ended',()=>{
-  console.log("game ended");
-})
+// socket.on('room_ready',()=>{
+//   console.log("ready");
+// })
+//
+// socket.on('said_word',()=>{
+//   console.log("said word");
+// })
+//
+// socket.on('user_typed',()=>{
+//   console.log("user typed");
+// })
+//
+// socket.on('game_ended',()=>{
+//   console.log("game ended");
+// })
 
 //Http Requests
 export default class Network{
